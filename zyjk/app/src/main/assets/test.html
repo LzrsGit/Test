@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Mobiscroll</title>
+
+    <!-- jQuery Include -->
+    <script src="http://code.jquery.com/jquery-1.12.2.min.js"></script>
+
+    <!-- Bootstrap Include -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    
+    <link href="css/mobiscroll-2.13.2.full.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/mobiscroll-2.13.2.full.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+    /*****************************************************************/
+    /* Demo Page styling, you can ignore this in your implementation */
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: arial, verdana, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    input,
+    select {
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        background: #fff;
+        font-family: arial, verdana, sans-serif;
+        text-shadow: none;
+        color: #000;
+        font-size: 15px;
+        -webkit-appearance: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    button {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.8em 2.6em;
+        margin: 20px 10px 0 0;
+        outline: 0;
+        border: 0;
+        overflow: visible;
+        cursor: pointer;
+        color: #fff;
+        background: #5185a8;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+    }
+    
+    button:hover {
+        background: #34566d;
+    }
+    
+    .header {
+        padding: .625em;
+        background: #5185a8;
+    }
+    
+    .header h1 {
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        font-size: 1.25em;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px #000;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    
+    .demo-main,
+    .demo-wrapper {
+        padding: 1em;
+    }
+    
+    .demo-iframe {
+        padding: 10px 10px 10px 10px;
+        text-shadow: none;
+    }
+    /* Demo page styling END */
+    /*************************/
+    
+            /* Basic usage demo styling */
+        .demo-stars {
+            padding: 0!important;
+        }
+        
+        .demo-stars .md-products {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -ms-touch-action: none;
+        }
+        
+        .demo-stars .md-products li {
+            position: relative;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+            border-bottom: 1px solid #b1b1b1;
+            border-top: 1px solid #fff;
+        }
+        
+        .demo-stars .md-products li h3 {
+            margin: 5px 0;
+            font-weight: normal;
+            font-size: initial;
+        }
+        
+        .demo-stars .md-products li p {
+            margin: 5px 0;
+            color: #717171;
+        }
+        
+        .demo-stars .md-products li .md-product {
+            height: 50px;
+            padding: 5px 65px 5px 60px;
+            color: #333;
+            text-align: left;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .demo-stars .md-products li .md-active {
+            background: #ddd;
+        }
+        
+        .demo-stars .md-products li .md-rate {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            text-align: right;
+        }
+        
+        .demo-stars .md-products li .md-rating {
+            padding-right: 10px;
+            font-size: 17px;
+            line-height: 60px;
+        }
+        
+        .demo-stars .md-products img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border: 0;
+        }
+        
+        @media (max-width: 960px) {
+            .demo-cont-c .demo-stars {
+                padding: 0;
+            }
+            .demo-cont-c .demo-phone-c .demo-phone {
+                margin: 0 -20px 40px;
+            }
+        }
+
+        /* Image Only demo styling */
+        .md-image-fruit .dw-ul .dw-li .mbsc-img-w {
+            text-align: center;
+        }
+        
+        .md-image-fruit .mbsc-sc-whl-sc .mbsc-sc-itm .mbsc-img-w {
+            text-align: center;
+        }
+
+        /* Basic usage demo styling */
+        .md-color {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-indent: 40px;
+            color: #000;
+            border: 1px solid #000;
+            background: #ff0000;
+            margin: 5px 0;
+            white-space: nowrap;
+        }
+        
+        .demo-display-inline .md-color {
+            display: block;
+            width: auto;
+            height: auto;
+            text-indent: 0;
+            margin: 0;
+            border: 0;
+            background: none !important;
+        }
+        
+        .demo-display-inline .md-color .mbsc-fr-inline,
+        .demo-display-inline .md-color .dw-inline {
+            text-align: left;
+        }
+
+        /* Two inputs demo styling */
+        .demo-display-inline .demo-twoinputs input,
+        .demo-display-inline .demo-twoinputs label,
+        .demo-display-inline .demo-twoinputs br {
+            display: none;
+        }
+
+        /* Create, remove, update demo styling */
+        .demo-comp-listview .mbsc-lv-fixed-header-ctx { text-shadow: none; }
+        .demo-comp-listview .demo-iframe { padding: 0; }
+        .demo-comp-listview .demo-note { margin: 10px; }
+        .md-demo-note {
+            cursor: pointer;
+        }
+        
+        .md-wo-list {
+            line-height: 30px;
+            text-shadow: none;
+        }
+        
+        .md-wo-list li {
+            line-height: normal;
+        }
+        
+        .md-wo-status {
+            font-size: 10px;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        .md-wo-empty {
+            padding: 10px;
+        }
+
+        /* Sort handle demo styling */
+        .demo-comp-listview .mbsc-lv-fixed-header-ctx { text-shadow: none; }
+        .demo-comp-listview .demo-iframe { padding: 0; }
+        .demo-comp-listview .demo-note { margin: 10px; }
+        .demo-sorthandle ul {
+            font-size: 16px;
+        }
+
+        /* Action menu demo styling */
+        .demo-comp-listview .mbsc-lv-fixed-header-ctx { text-shadow: none; }
+        .demo-comp-listview .demo-iframe { padding: 0; }
+        .demo-comp-listview .demo-note { margin: 10px; }
+        .demo-actionmenu ul {
+            font-size: 18px;
+        }
+        
+        .demo-notification {
+            position: absolute;
+            width: 100%;
+            z-index: 100001;
+            left: 0;
+            bottom: 20px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            -webkit-transition: opacity 200ms;
+            -moz-transition: opacity 200ms;
+            transition: opacity 200ms;
+        }
+        
+        .demo-notification-fixed {
+            position: fixed;
+        }
+        
+        .demo-notification-i {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            line-height: 20px;
+            text-shadow: none;
+            box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+            border-radius: 3px;
+            padding: 5px;
+        }
+        
+        .demo-notification-v {
+            opacity: 1;
+        }
+
+        /* Currency demo styling */
+        .demo-currency {
+            padding: 0!important;
+        }
+        
+        .md-stepper-np .md-demo {
+            text-align: center;
+        }
+        
+        .md-stepper-np .md-demo .mbsc-desc {
+            font-size: 16px;
+            padding-bottom: 16px;
+        }
+        
+        .md-stepper-np .md-demo .mbsc-btn {
+            margin-top: 36px;
+        }
+        
+        .md-stepper-np .md-title {
+            margin-top: 40px;
+        }
+        
+        .md-stepper-np {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .md-stepper-np .mbsc-segmented {
+            left: 50%;
+            margin-left: -122px;
+        }
+        
+        .md-stepper-np.mbsc-form .mbsc-stepper .mbsc-segmented-item {
+            width: 4.375em;
+        }
+        
+        .md-stepper-np.mbsc-form .mbsc-stepper .mbsc-segmented-item:nth-child(3) {
+            width: 6.25em;
+        }
+        
+        .md-stepper-np.mbsc-form .mbsc-stepper input {
+            left: 5em;
+            width: 7.1428em;
+        }
+
+        /* Tab menu demo styling */
+        .demo-comp-menustrip #demombscr { position: static; }
+        .demo-comp-menustrip .demo-iframe { padding: 0; min-height: 300px; }
+        .demo-comp-menustrip .demo-phone-np .demo-phone { margin: 0 -20px -20px -20px; }
+        .md-tab-h {
+            display: none;
+        }
+        
+        .demo-tabs .md-tabs-sel {
+            display: block;
+        }
+        
+        .md-app-ic {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            margin-top: -12px;
+            font-size: 20px;
+            line-height: 24px;
+        }
+        
+        .md-app-detail {
+            display: block;
+            overflow: hidden;
+        }
+        
+        .md-app-size {
+            font-size: 10px;
+            display: block;
+            opacity: .6;
+            float: left;
+        }
+        
+        .md-app-date {
+            font-size: 10px;
+            display: block;
+            opacity: .6;
+            float: right;
+        }
+        
+        .md-apps-ul li.mbsc-lv-item {
+            padding-left: 50px;
+        }
+        
+        .demo-display-top .md-apps-ul {
+            padding-top: 47px;
+        }
+        
+        .demo-display-top .mbsc-lv-android .md-apps-ul {
+            padding-top: 34px;
+        }
+        
+        .demo-display-top .mbsc-lv-android-holo .md-apps-ul {
+            padding-top: 45px;
+        }
+        
+        .demo-display-top .mbsc-lv-bootstrap .md-apps-ul {
+            padding-top: 36px;
+        }
+        
+        .demo-display-top .mbsc-lv-ios .md-apps-ul {
+            padding-top: 42px;
+        }
+        
+        .demo-display-top .mbsc-lv-ios-classic .md-apps-ul {
+            padding-top: 38px;
+        }
+        
+        .demo-display-top .mbsc-lv-jqm .md-apps-ul {
+            padding-top: 33px;
+        }
+        
+        .demo-display-top .mbsc-lv-sense-ui .md-apps-ul {
+            padding-top: 39px;
+        }
+        
+        .demo-display-top .mbsc-lv-sense .md-apps-ul {
+            padding-top: 39px;
+        }
+        
+        .demo-display-top .mbsc-lv-wp .md-apps-ul {
+            padding-top: 75px;
+        }
+        
+        .demo-display-bottom .demo-tabs {
+            padding-bottom: 75px;
+        }
+
+        /* Dialog demo styling */
+        .md-text-center {
+            text-align: center;
+        }
+        
+        .md-dialog {
+            width: 260px;
+            margin: 0 auto;
+        }
+
+        /* Alert message demo styling */
+        .md-body {
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Progress demo styling */
+        .md-progress-demo .md-demo .mbsc-progress-cont {
+            padding: 1em;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        .md-progress-demo .md-upload.mbsc-progress,
+        .md-progress-demo .md-demo.mbsc-progress {
+            overflow: hidden;
+        }
+        
+        .md-progress-demo .md-demo .mbsc-progress-step-label {
+            overflow: visible;
+        }
+        
+        .md-progress-demo.mbsc-wp .mbsc-progress {
+            min-height: 3.75em;
+        }
+        
+        .md-progress-demo .md-upload .mbsc-progress-cont {
+            padding-right: 1em;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .tmp{
+        	opacity	:0;
+        }
+
+    </style>
+
+    <script>
+   /* Unordered list demo script */
+            $(function () {
+                // Mobiscroll Treelist initialization
+              $('#rsee').on('click', function() {
+                $('#remarklist').mobiscroll().treelist({
+                    theme: 'IOS7',          // Specify theme like: theme: 'ios' or omit setting to use default
+                    lang: 'zh',        // Specify language like: lang: 'pl' or omit setting to use default
+                    display: 'bottom',      // Specify display mode like: display: 'bottom' or omit setting to use default
+                    mode: 'scroller',            // More info about mode: https://docs.mobiscroll.com/3-0-0_beta2/list#!opt-mode
+                    labels: ['Ingredients'],           // More info about labels: https://docs.mobiscroll.com/3-0-0_beta2/list#!opt-labels
+                    //placeholder: '测试',  // More info about placeholder: https://docs.mobiscroll.com/3-0-0_beta2/list#!opt-placeholder
+                    inputClass : 'tmp',
+                    width: 200,                         // More info about width: https://docs.mobiscroll.com/3-0-0_beta2/list#!opt-width
+	                //headerText: '请选择',
+	                onSelect : function(valueText) {//valueText 是当前的下标，从而获得当前点击元素下内容
+				      $('#rsee').val($(this).find('li').eq(valueText).text());
+				      $('#rsee_hid').val($(this).find('li').eq(valueText).val());
+				    },
+				    onChange : function(event, inst) {
+				      //alert('a');
+				    }
+							     	
+                }); 
+                $("input[id^=remarklist]").focus();//关键在于 点触发点击事件后，是的自动生成的input得到焦点，是的滚动的部分出现
+             });    
+          });
+       
+
+    </script>
+</head>
+
+<body>
+      <!-- Unordered list START -->
+    <div class="demo-wrapper demo-wrapper-listUnordered">
+     <input type="text" id="rsee" readonly="readonly">
+      <input type="hidden" id="rsee_hid" >
+        <ul id="remarklist" style="display:none">
+            <li value="1">Sugar</li>
+            <li value="2">Salt</li>
+            <li value="3">Butter</li>
+            <li value="4">Flour</li>
+            <li value="5">Chocolate</li>
+        </ul>
+        
+    </div>
+    <!-- Unordered list END -->
+</body>
+
+</html>

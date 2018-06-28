@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layout_titlebar"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="#1FA0FE">
+
+
+    <TextView
+        android:id="@+id/res_text_title"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ellipsize="marquee"
+        android:gravity="center_horizontal|center"
+        android:singleLine="true"
+        android:text="核查结果"
+        android:textColor="#ffffffff"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/end_btn"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/end"/>
+
+
+</RelativeLayout>
